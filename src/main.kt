@@ -30,10 +30,12 @@ private fun run(source: String) {
 		val tokens = Lexer(source).scanTokens()
 		val expression = Parser(tokens).parse()!!
 
+		val derivated = Derivate().derivate(expression)
 		println(
-			InfixPrinter().print(
-				Derivate().derivate(expression)
-			)
+			InfixPrinter().print(derivated)
+		)
+		println(
+			TreePrinter().print(derivated)
 		)
 	} catch (e: Throwable) {
 		println("Sumthing weurd huppend")
