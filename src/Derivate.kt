@@ -137,7 +137,24 @@ class Derivate {
 						derivate(expr.expression)
 					)
 				}
-//				TokenType.CTG ->
+				TokenType.CTG -> {
+					Expr.Binary(
+						Expr.Binary(
+							Expr.Number(-1),
+							Token(TokenType.MINUS, "-", null),
+							Expr.Binary(
+								Expr.Function(
+									Token(TokenType.CTG, "ctg", null),
+									expr.expression
+								),
+								Token(TokenType.CARET, "^", null),
+								Expr.Number(2)
+							)
+						),
+						Token(TokenType.STAR, "*", null),
+						derivate(expr.expression)
+					)
+				}
 				TokenType.ASIN -> {
 					Expr.Binary(
 						Expr.Binary(
