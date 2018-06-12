@@ -115,6 +115,14 @@ class Derivate {
 					)
 //				TokenType.TG -> Math.tan(calc(expr.expression))
 //				TokenType.CTG -> 1/ Math.tan(calc(expr.expression))
+//				TokenType.ASIN ->
+//				TokenType.ACOS ->
+//				TokenType.ATG ->
+//				TokenType.ACTG ->
+//				TokenType.SINH ->
+//				TokenType.COSH ->
+//				TokenType.TGH ->
+//				TokenType.CTGH ->
 //				TokenType.LN -> Math.log(calc(expr.expression))
 //				TokenType.LOG2 -> Math.log(calc(expr.expression)) / Math.log(2.0)
 //				TokenType.LOG10 -> Math.log10(calc(expr.expression))
