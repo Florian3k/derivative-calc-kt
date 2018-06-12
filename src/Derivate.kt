@@ -253,8 +253,42 @@ class Derivate {
 						derivate(expr.expression)
 					)
 				}
-//				TokenType.TGH ->
-//				TokenType.CTGH ->
+				TokenType.TGH -> {
+					Expr.Binary(
+						Expr.Binary(
+							Expr.Number(1),
+							Token(TokenType.MINUS, "-", null),
+							Expr.Binary(
+								Expr.Function(
+									Token(TokenType.TGH, "tgh", null),
+									expr.expression
+								),
+								Token(TokenType.CARET, "^", null),
+								Expr.Number(2)
+							)
+						),
+						Token(TokenType.STAR, "*", null),
+						derivate(expr.expression)
+					)
+				}
+				TokenType.CTGH -> {
+					Expr.Binary(
+						Expr.Binary(
+							Expr.Number(1),
+							Token(TokenType.MINUS, "-", null),
+							Expr.Binary(
+								Expr.Function(
+									Token(TokenType.CTGH, "ctgh", null),
+									expr.expression
+								),
+								Token(TokenType.CARET, "^", null),
+								Expr.Number(2)
+							)
+						),
+						Token(TokenType.STAR, "*", null),
+						derivate(expr.expression)
+					)
+				}
 				TokenType.LN -> {
 					Expr.Binary(
 						derivate(expr.expression),
