@@ -263,8 +263,34 @@ class Derivate {
 						expr.expression
 					)
 				}
-//				TokenType.LOG2 ->
-//				TokenType.LOG10 ->
+				TokenType.LOG2 -> {
+					Expr.Binary(
+						derivate(expr.expression),
+						Token(TokenType.SLASH, "/", null),
+						Expr.Binary(
+							expr.expression,
+							Token(TokenType.STAR, "*", null),
+							Expr.Function(
+								Token(TokenType.LN, "ln", null),
+								Expr.Number(2)
+							)
+						)
+					)
+				}
+				TokenType.LOG10 -> {
+					Expr.Binary(
+						derivate(expr.expression),
+						Token(TokenType.SLASH, "/", null),
+						Expr.Binary(
+							expr.expression,
+							Token(TokenType.STAR, "*", null),
+							Expr.Function(
+								Token(TokenType.LN, "ln", null),
+								Expr.Number(10)
+							)
+						)
+					)
+				}
 
 				else -> throw error(expr.function, "WTF is this function")
 			}
