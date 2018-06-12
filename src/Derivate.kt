@@ -125,7 +125,7 @@ class Derivate {
 //				TokenType.ACOS ->
 //				TokenType.ATG ->
 //				TokenType.ACTG ->
-				TokenType.SINH ->
+				TokenType.SINH -> {
 					Expr.Binary(
 						Expr.Function(
 							Token(TokenType.COSH, "cosh", null),
@@ -134,7 +134,8 @@ class Derivate {
 						Token(TokenType.STAR, "*", null),
 						derivate(expr.expression)
 					)
-				TokenType.COSH ->
+				}
+				TokenType.COSH -> {
 					Expr.Binary(
 						Expr.Function(
 							Token(TokenType.SINH, "sinh", null),
@@ -143,14 +144,16 @@ class Derivate {
 						Token(TokenType.STAR, "*", null),
 						derivate(expr.expression)
 					)
+				}
 //				TokenType.TGH ->
 //				TokenType.CTGH ->
-				TokenType.LN ->
+				TokenType.LN -> {
 					Expr.Binary(
 						derivate(expr.expression),
 						Token(TokenType.SLASH, "/", null),
 						expr.expression
 					)
+				}
 //				TokenType.LOG2 ->
 //				TokenType.LOG10 ->
 
