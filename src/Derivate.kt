@@ -119,7 +119,24 @@ class Derivate {
 						derivate(expr.expression)
 					)
 				}
-//				TokenType.TG ->
+				TokenType.TG -> {
+					Expr.Binary(
+						Expr.Binary(
+							Expr.Number(1),
+							Token(TokenType.PLUS, "+", null),
+							Expr.Binary(
+								Expr.Function(
+									Token(TokenType.TG, "tg", null),
+									expr.expression
+								),
+								Token(TokenType.CARET, "^", null),
+								Expr.Number(2)
+							)
+						),
+						Token(TokenType.STAR, "*", null),
+						derivate(expr.expression)
+					)
+				}
 //				TokenType.CTG ->
 				TokenType.ASIN -> {
 					Expr.Binary(
