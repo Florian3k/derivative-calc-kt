@@ -145,7 +145,12 @@ class Derivate {
 					)
 //				TokenType.TGH ->
 //				TokenType.CTGH ->
-//				TokenType.LN ->
+				TokenType.LN ->
+					Expr.Binary(
+						derivate(expr.expression),
+						Token(TokenType.SLASH, "/", null),
+						expr.expression
+					)
 //				TokenType.LOG2 ->
 //				TokenType.LOG10 ->
 
