@@ -162,7 +162,25 @@ class Derivate {
 						)
 					)
 				}
-//				TokenType.ATG ->
+				TokenType.ATG -> {
+					Expr.Binary(
+						Expr.Binary(
+							Expr.Number(1),
+							Token(TokenType.SLASH, "/", null),
+							Expr.Binary(
+								Expr.Number(1),
+								Token(TokenType.PLUS, "+", null),
+								Expr.Binary(
+									expr.expression,
+									Token(TokenType.CARET, "^", null),
+									Expr.Number(2)
+								)
+							)
+						),
+						Token(TokenType.STAR, "*", null),
+						derivate(expr.expression)
+					)
+				}
 //				TokenType.ACTG ->
 				TokenType.SINH -> {
 					Expr.Binary(
