@@ -119,19 +119,36 @@ class Derivate {
 						derivate(expr.expression)
 					)
 				}
-//				TokenType.TG -> Math.tan(calc(expr.expression))
-//				TokenType.CTG -> 1/ Math.tan(calc(expr.expression))
+//				TokenType.TG ->
+//				TokenType.CTG ->
 //				TokenType.ASIN ->
 //				TokenType.ACOS ->
 //				TokenType.ATG ->
 //				TokenType.ACTG ->
-//				TokenType.SINH ->
-//				TokenType.COSH ->
+				TokenType.SINH ->
+					Expr.Binary(
+						Expr.Function(
+							Token(TokenType.COSH, "cosh", null),
+							expr.expression
+						),
+						Token(TokenType.STAR, "*", null),
+						derivate(expr.expression)
+					)
+				TokenType.COSH ->
+					Expr.Binary(
+						Expr.Function(
+							Token(TokenType.SINH, "sinh", null),
+							expr.expression
+						),
+						Token(TokenType.STAR, "*", null),
+						derivate(expr.expression)
+					)
 //				TokenType.TGH ->
 //				TokenType.CTGH ->
-//				TokenType.LN -> Math.log(calc(expr.expression))
-//				TokenType.LOG2 -> Math.log(calc(expr.expression)) / Math.log(2.0)
-//				TokenType.LOG10 -> Math.log10(calc(expr.expression))
+//				TokenType.LN ->
+//				TokenType.LOG2 ->
+//				TokenType.LOG10 ->
+
 				else -> throw error(expr.function, "WTF is this function")
 			}
 			is Expr.Unary -> when(expr.operator.type) {

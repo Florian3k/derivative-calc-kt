@@ -62,6 +62,8 @@ class Parser(private val tokens: List<Token>) {
 	private fun function(): Expr {
 		if ( match(
 				TokenType.SIN, TokenType.COS, TokenType.TG, TokenType.CTG,
+				TokenType.ASIN, TokenType.ACOS, TokenType.ATG, TokenType.ACTG,
+				TokenType.SINH, TokenType.COSH, TokenType.TGH, TokenType.CTGH,
 				TokenType.LN, TokenType.LOG10, TokenType.LOG2
 			)
 		) {
