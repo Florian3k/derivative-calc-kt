@@ -140,7 +140,28 @@ class Derivate {
 						derivate(expr.expression)
 					)
 				}
-//				TokenType.ACOS ->
+				TokenType.ACOS -> {
+					Expr.Unary(
+						Token(TokenType.MINUS, "-", null),
+						Expr.Binary(
+							Expr.Binary(
+								Expr.Binary(
+									Expr.Number(1),
+									Token(TokenType.MINUS, "-", null),
+									Expr.Binary(
+										expr.expression,
+										Token(TokenType.CARET, "^", null),
+										Expr.Number(2)
+									)
+								),
+								Token(TokenType.CARET, "^", null),
+								Expr.Number(-0.5)
+							),
+							Token(TokenType.STAR, "*", null),
+							derivate(expr.expression)
+						)
+					)
+				}
 //				TokenType.ATG ->
 //				TokenType.ACTG ->
 				TokenType.SINH -> {
