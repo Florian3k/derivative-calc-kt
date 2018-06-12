@@ -30,7 +30,6 @@ class Derivate {
 							derivate(expr.right)
 						)
 					)
-					// calc(expr.left) * calc(expr.right)
 				}
 				TokenType.SLASH -> {
 					Expr.Binary(
