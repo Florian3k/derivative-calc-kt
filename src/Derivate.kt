@@ -17,19 +17,15 @@ class Derivate {
 					)
 				}
 				TokenType.STAR -> {
-					Expr.Binary(
-						Expr.Binary(
-							derivate(expr.left),
-							Token(TokenType.STAR, "*", null),
-							expr.right
-						),
-						Token(TokenType.MINUS, "+", null),
-						Expr.Binary(
-							expr.left,
-							Token(TokenType.STAR, "*", null),
-							derivate(expr.right)
-						)
-					)
+					(ExprMaker()
+						+ derivate(expr.left)
+						+ "*"
+						+ expr.right
+						+ "+"
+						+ expr.left
+						+ "*"
+						+ derivate(expr.right)
+					).toExpr()
 				}
 				TokenType.SLASH -> {
 					Expr.Binary(
