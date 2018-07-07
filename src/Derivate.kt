@@ -344,4 +344,20 @@ class Derivate {
 	}
 
 	class TokenError : RuntimeException()
+
+	private class ExprMaker {
+		val tokens = mutableListOf<Token>()
+		operator fun plus(string: String): ExprMaker {
+			tokens.addAll(Lexer(string).scanTokens().filter { it.type != TokenType.EOF })
+			return this
+		}
+		operator fun plus(expr: Expr): ExprMaker {
+			tokens.addAll(Tokenizer().tokenize(expr))
+			return this
+		}
+		fun toExpr(): Expr {
+			tokens.add(Token(TokenType.EOF,"",null))
+			return Parser(tokens).parse()!!
+		}
+	}
 }
