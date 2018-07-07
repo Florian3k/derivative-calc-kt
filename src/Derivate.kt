@@ -332,7 +332,6 @@ class Derivate {
 				else -> throw error("WTF is this unary operator")
 			}
 			is Expr.X -> Expr.Number(1)
-			else -> throw RuntimeException("WTF is this")
 		}
 	}
 	private fun error(token: Token, message: String): TokenError {
